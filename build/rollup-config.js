@@ -29,7 +29,7 @@ exports.noConflict = function() {
 	window.L = oldL;
 	return this;
 }
-window.L.ISWGS84 = true;
+exports.ISWGS84 = true;
 
 // Always export us to window global (see #2364)
 window.L = exports;`;

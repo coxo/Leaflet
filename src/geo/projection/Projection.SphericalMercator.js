@@ -170,14 +170,16 @@ export var SphericalMercator = {
 
 	unproject: function (point) {
 		var d = 180 / Math.PI;
-		
+
 		var lonlat = new LatLng(
 			(2 * Math.atan(Math.exp(point.y / this.R)) - (Math.PI / 2)) * d,
 			point.x * d / this.R);
 		if(L.ISWGS84){
 			lonlat = this.gcj2wgs(lonlat.lng,lonlat.lat);
+			return new LatLng(lonlat.lat,lonlat.lon);
+		}else{
+			return lonlat;
 		}
-		return new LatLng(lonlat.lat,lonlat.lon);
 
 		// return new LatLng(
 		// 	(2 * Math.atan(Math.exp(point.y / this.R)) - (Math.PI / 2)) * d,
